@@ -2,6 +2,6 @@
 library("dplyr") 
 
 # Load data
-data <- read.csv("data/aging-and-disability-services-client-level-data-2010.csv", stringsAsFactors = FALSE)
+data <- read.csv("data/aging-and-disability-services-client-level-data-2016.csv", stringsAsFactors = FALSE)
 
-Views(data)
+View(data)
