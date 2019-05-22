@@ -6,7 +6,27 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-
+knitr::opts_chunk$set()
+library(knitr)
+age_data <- 
+  read.csv("data/aging-and-disability-services-client-level-data-2016.csv")
+source("scripts/summary.R")
+source("scripts/summary_table.R")
 ```
 
+## Disability in the United States
 
+Looking at **disability across the United States**, we have found data to understand where there may be defecits in accessibility for disabled people. This includes looking at specific groups of people that may need the most accessibility based on their level of ability to perform certain tasks. The dataset described in this report is from Seattle City's Aging and Disability Services department. The data collected based on City of Seattle neighborhoods and broken down by age range and ability to do daily tasks, and includesinformation on race, ethnicity, and housing status.This gives a good idea of how prevalent disability is in the city of Seattle, WA and which physical locations may need the most attention when it comes to providing accessibility. 
+
+## Summary of Data
+```{r summary_list, echo=FALSE, include=FALSE}
+summary_list <- summary_info(age_data)
+```
+
+This set of data inclues `r summary_list$length` distinct pieces of information for `r summary_list$height` separate people in the city of Seattle. It spans 20 different neighborhoods within the city limits which are, `r summary_list$locations`. Each person is given a code to represent their stated race which is `r summary_list$race`. Those codes are as follows; 1 - American Indian or Alaska Native, 2 - Asian, Asian-American, 3 - Black, African American, Other African, 4 - Hawaiian Native or Pacific Islander, 5 - Hispanic, Latino, 6 - White or Caucasian, 7 - Other, 8 - Multi-Racial, or NA - Not Available. Finally, the data shows the prevalence of disability in the Seattle area, with each person bgin marked as Y - yes they have a disability, N - no they do not have a disability, or U - unknown. The most prevalent marker in the dataset is `r summary_list$disability` showing that more people have a disability than do not in the data collected.
+
+## Table of Summary Information
+```{r sum_table, echo=FALSE}
+kable(summary_table(age_data))
+```
+      
