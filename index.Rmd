@@ -1,0 +1,15 @@
+---
+title: "Disabiliy Across Seattle"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("./scripts/neighborhoods.R")
+dataframe <- read.csv("./data/aging-and-disability-services-client-level-data-2016.csv", stringsAsFactors = FALSE)
+```
+
+
+## How many people with disabilities be found in each Seattle neighborhood and how many of those people are homeless?
+From the bar char below one can see which **Seattle neighborhood** has the most people with disabilities. When scrolled over each bar shows which neighborhood was hovered over, the exact number of disabled people, and the exact number of people that are _disabled_ and _homeless_. The bar chart makes it clear which Seattle neighborhood has the **highest population** of people with disabilities the added color gradient makes it clear which neighborhood has the highest number of homeless people with disabilities. 
+`r bar_chart(dataframe)`
