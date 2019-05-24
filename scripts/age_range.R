@@ -2,11 +2,14 @@
 library("dplyr") 
 library("tidyverse")
 library("ggplot2")
+library("plotly")
 
 stacked_bar_chart <- function(data) {
   data_age <- data %>%
     select(AgeRange, LiveAlone, DisabilityStatus, NutritionalRisk) %>%
     filter(str_detect(AgeRange, "to")) %>%
+    filter(AgeRange != "100 to 104") %>%
+    filter(AgeRange != "45 to 49") %>%
     group_by(AgeRange) %>%
     filter(str_detect(LiveAlone, "Y|y"),
            str_detect(DisabilityStatus, "Y|y"),
@@ -22,6 +25,8 @@ stacked_bar_chart <- function(data) {
          x = "Age Range",
          y = "Number of People",
          fill = "Disadvantage Status"
-    )
-  return(age_plot)
+    ) + theme(axis.text.x = element_text(angle = 30))
+  
+  plot <- ggplotly(age_plot)
+  return(plot)
 }

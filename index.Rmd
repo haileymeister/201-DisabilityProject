@@ -45,6 +45,6 @@ From the bar chart below one can see which **Seattle neighborhood** has the most
 
 ## Disadvantaged Status Based on Age Range
 We can see with the following stacked bar chart which **age range** suffer the most disadvantaging statuses. We determine disadvantages as whether or not the clients have a _disability_, whether or not the they _live alone_, and whether or not they suffer _high nutrition risk_. We can see the people between the ages 65-85 seem to deal with the most disadvantages.
-
-`r stacked_bar_chart(age_data)`
-
+```{r stack, echo = FALSE}
+stacked_bar_chart(age_data)
+```
