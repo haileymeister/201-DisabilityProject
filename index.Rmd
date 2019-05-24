@@ -28,7 +28,7 @@ This set of data inclues `r summary_list$length` _distinct pieces_ of informatio
 ## Table of Summary Information
 
 This table shows relevant information based on the age ranges given:
-```{r sum_table, echo=FALSE}
+```{r sum_table, echo=FALSE, message=FALSE, warning=FALSE}
 kable(summary_table(age_data), col.names = c("Age Range", "Number of People", "Most Prevalent Income Bracket", "Most Prevalent Race", "Number of Disability Types"))
 ```
 
