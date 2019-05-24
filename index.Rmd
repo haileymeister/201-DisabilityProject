@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = FALSE)
 source("./scripts/neighborhoods.R")
 source("scripts/summary.R")
 source("scripts/summary_table.R")
+source("./scripts/age_range.R")
 age_data <- read.csv("./data/aging-and-disability-services-client-level-data-2016.csv", stringsAsFactors = FALSE)
 ```
 
@@ -23,13 +24,27 @@ Looking at **disability across the United States**, we have found data to unders
 summary_list <- summary_info(age_data)
 ```
 
-This set of data inclues `r summary_list$length` distinct pieces of information for `r summary_list$height` separate people in the city of Seattle. It spans 20 different neighborhoods within the city limits which are, `r summary_list$locations`. Each person is given a code to represent their stated race which is `r summary_list$race`. Those codes are as follows; 1 - American Indian or Alaska Native, 2 - Asian, Asian-American, 3 - Black, African American, Other African, 4 - Hawaiian Native or Pacific Islander, 5 - Hispanic, Latino, 6 - White or Caucasian, 7 - Other, 8 - Multi-Racial, or NA - Not Available. Finally, the data shows the prevalence of disability in the Seattle area, with each person bgin marked as Y - yes they have a disability, N - no they do not have a disability, or U - unknown. The most prevalent marker in the dataset is `r summary_list$disability` showing that more people have a disability than do not in the data collected.
+This set of data inclues `r summary_list$length` _distinct pieces_ of information for `r summary_list$height` separate people in the city of Seattle. It spans 20 different neighborhoods within the city limits which are, `r summary_list$locations`. Each person is given a code to represent their stated race which is `r summary_list$race`. Those codes are as follows; 1 - American Indian or Alaska Native, 2 - Asian, Asian-American, 3 - Black, African American, Other African, 4 - Hawaiian Native or Pacific Islander, 5 - Hispanic, Latino, 6 - White or Caucasian, 7 - Other, 8 - Multi-Racial, or NA - Not Available. Finally, the data shows the **prevalence of disability** in the Seattle area, with each person bgin marked as Y - yes they have a disability, N - no they do not have a disability, or U - unknown. The most prevalent marker in the dataset is `r summary_list$disability` showing that more people have a disability than do not in the data collected.
 
 ## Table of Summary Information
+
+This table shows relevant information based on the age ranges given:
 ```{r sum_table, echo=FALSE}
 kable(summary_table(age_data), col.names = c("Age Range", "Number of People", "Most Prevalent Income Bracket", "Most Prevalent Race", "Number of Disability Types"))
 ```
 
+The three main points from the table are as follows: 
+
+* The most prevalent race for a high percentage of age ranges is Multi-Racial
+* There are multiple disability types per age range, only a few have only one
+* Most of the people are in the age range of 65 and above, making it also an age related issue of disability
+
 ## Disability and Homelessness
-From the bar char below one can see which **Seattle neighborhood** has the most people with disabilities. When scrolled over each bar shows which neighborhood was hovered over, the exact number of disabled people, and the exact number of people that are _disabled_ and _homeless_. The bar chart makes it clear which Seattle neighborhood has the **highest population** of people with disabilities the added color gradient makes it clear which neighborhood has the highest number of homeless people with disabilities. From this data one can see that there is a flaw provided acessability for people with disabilities because there are so many homeless people with disabilities in Seattle, WA. 
+From the bar chart below one can see which **Seattle neighborhood** has the most people with disabilities. When scrolled over each bar shows which neighborhood was hovered over, the exact number of disabled people, and the exact number of people that are _disabled_ and _homeless_. The bar chart makes it clear which Seattle neighborhood has the **highest population** of people with disabilities the added color gradient makes it clear which neighborhood has the highest number of homeless people with disabilities. From this data one can see that there is a flaw provided acessability for people with disabilities because there are so many homeless people with disabilities in Seattle, WA. 
 `r bar_chart(age_data)`
+
+## Disadvantaged Status Based on Age Range
+We can see with the following stacked bar chart which **age range** suffer the most disadvantaging statuses. We determine disadvantages as whether or not the clients have a _disability_, whether or not the they _live alone_, and whether or not they suffer _high nutrition risk_. We can see the people between the ages 65-85 seem to deal with the most disadvantages.
+```{r stack, echo = FALSE}
+stacked_bar_chart(age_data)
+```
