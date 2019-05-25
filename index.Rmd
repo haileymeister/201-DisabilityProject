@@ -12,6 +12,10 @@ source("./scripts/neighborhoods.R")
 source("scripts/summary.R")
 source("scripts/summary_table.R")
 source("./scripts/age_range.R")
+<<<<<<< HEAD
+=======
+source("./scripts/percent_line_graph.R")
+>>>>>>> katie
 age_data <- read.csv("./data/aging-and-disability-services-client-level-data-2016.csv", stringsAsFactors = FALSE)
 ```
 
@@ -24,7 +28,11 @@ Looking at **disability across the United States**, we have found data to unders
 summary_list <- summary_info(age_data)
 ```
 
+<<<<<<< HEAD
 This set of data inclues `r summary_list$length` _distinct pieces_ of information for `r summary_list$height` separate people in the city of Seattle. It spans 20 different neighborhoods within the city limits which are, `r summary_list$locations`. Each person is given a code to represent their stated race which is `r summary_list$race`. Those codes are as follows; 1 - American Indian or Alaska Native, 2 - Asian, Asian-American, 3 - Black, African American, Other African, 4 - Hawaiian Native or Pacific Islander, 5 - Hispanic, Latino, 6 - White or Caucasian, 7 - Other, 8 - Multi-Racial, or NA - Not Available. Finally, the data shows the **prevalence of disability** in the Seattle area, with each person bgin marked as Y - yes they have a disability, N - no they do not have a disability, or U - unknown. The most prevalent marker in the dataset is `r summary_list$disability` showing that more people have a disability than do not in the data collected.
+=======
+This set of data includes `r summary_list$length` _distinct pieces_ of information for `r summary_list$height` separate people in the city of Seattle. It spans 20 different neighborhoods within the city limits which are, `r summary_list$locations`. Each person is given a code to represent their stated race which is `r summary_list$race`. Those codes are as follows; 1 - American Indian or Alaska Native, 2 - Asian, Asian-American, 3 - Black, African American, Other African, 4 - Hawaiian Native or Pacific Islander, 5 - Hispanic, Latino, 6 - White or Caucasian, 7 - Other, 8 - Multi-Racial, or NA - Not Available. Finally, the data shows the **prevalence of disability** in the Seattle area, with each person bgin marked as Y - yes they have a disability, N - no they do not have a disability, or U - unknown. The most prevalent marker in the dataset is `r summary_list$disability` showing that more people have a disability than do not in the data collected.
+>>>>>>> katie
 
 ## Table of Summary Information
 
@@ -48,4 +56,15 @@ We can see with the following stacked bar chart which **age ranges** suffer the 
 
 ```{r stack, echo = FALSE}
 stacked_bar_chart(age_data)
+<<<<<<< HEAD
+=======
+```
+
+## Percentage of People with Disabilities in Seattle
+To determine if there has been a **change** in the _percentage of people with a disability_ in the Seattle Area, we made a line graph depicting this information between the years of _2010 to 2016_. From this chart, we can determine that there has been a small change in
+this percentage from 57.6%  in 2010 to 59.83% in 2016. The overall trend is that the percent of the population with a disability **increased during these years** and has been consistently higher than 50%. In 2011, the lowest percentage was reported while 2016 had the highest percentage reported. This chart does not account for type or number of disabilities but rather if an individual from this dataset in a certain year had any a disability. This information is crucial to knowing that there is a large need to address this population and that more attention should be focused on creating more accessibility in Seattle.
+
+``` {r line_graph, echo = FALSE}
+line_graph
+>>>>>>> katie
 ```
