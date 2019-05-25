@@ -1,24 +1,24 @@
 # Load Data
 data_2010 <- read.csv(file =
-    "aging-and-disability-services-client-level-data-2010.csv",
+    "data/aging-and-disability-services-client-level-data-2010.csv",
     stringsAsFactors = FALSE)
 data_2011 <- read.csv(file =
-    "linegraph/aging-and-disability-services-client-level-data-2011.csv",
+    "data/linegraph/aging-and-disability-services-client-level-data-2011.csv",
     stringsAsFactors = FALSE)
 data_2012 <- read.csv(file =
-    "linegraph/aging-and-disability-services-client-level-data-2012.csv",
+    "data/linegraph/aging-and-disability-services-client-level-data-2012.csv",
     stringsAsFactors = FALSE)
 data_2013 <- read.csv(file = 
-    "linegraph/aging-and-disability-services-client-level-data-2013.csv",
+    "data/linegraph/aging-and-disability-services-client-level-data-2013.csv",
     stringsAsFactors = FALSE)
 data_2014 <- read.csv(file = 
-    "linegraph/aging-and-disability-services-client-level-data-2014.csv",
+    "data/linegraph/aging-and-disability-services-client-level-data-2014.csv",
     stringsAsFactors = FALSE)
 data_2015 <- read.csv(file = 
-    "linegraph/aging-and-disability-services-client-level-data-2015.csv",
+    "data/linegraph/aging-and-disability-services-client-level-data-2015.csv",
     stringsAsFactors = FALSE)
 data_2016 <- read.csv(file = 
-    "aging-and-disability-services-client-level-data-2016.csv",
+    "data/aging-and-disability-services-client-level-data-2016.csv",
     stringsAsFactors = FALSE)
 
 # Loading Packages
