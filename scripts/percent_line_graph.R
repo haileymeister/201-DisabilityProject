@@ -31,27 +31,25 @@ data_all_years <- rbind(data_2010, data_2011, data_2012, data_2013, data_2014,
                         data_2015, data_2016)
 
 # Organizing data for Line Graph
-disability_data <- overall_data %>%
+disability_data <- data_all_years %>%
   filter(DisabilityStatus == "Y") %>%
   group_by(ServiceYear) %>%
   summarize(num_disabled = n())
 
 # Data Sorted by Year
-data_sorted_by_year <- overall_data %>%
+data_sorted_by_year <- data_all_years %>%
   group_by(ServiceYear) %>%
   summarize(num_all = n())
 
 # Joining Data Together for Line Graph
-overall_line_graph_data <- left_join(disability_data, data_sorted_by_year,
+data <- left_join(disability_data, data_sorted_by_year,
                                      "ServiceYear")
 
-# Line Graph Data
-percent_line_graph_data <- overall_line_graph_data %>%
-  filter(ServiceYear != "NA") %>%
-  mutate(percent_disabled = (num_disabled / num_all) * 100 )
-
 # Function for making the Line Graph
-line_graph_display <- function(chart_3) {
+line_graph_display <- function(data) {
+  percent_line_graph_data <- data %>%
+    filter(ServiceYear != "NA") %>%
+    mutate(percent_disabled = (num_disabled / num_all) * 100 )
   line_graph <- ggplot(percent_line_graph_data,
                        aes(x = ServiceYear, y = percent_disabled)) +
     geom_point(alpha = 0.5, size = 5) + geom_line() +
@@ -62,3 +60,4 @@ line_graph_display <- function(chart_3) {
     )
   return(line_graph)
 }
+line_graph_display(data)
