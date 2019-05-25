@@ -7,6 +7,9 @@ output: html_document
 
 ```{r setup, include=FALSE}
 library("knitr")
+library("dplyr")
+library("ggplot2")
+library("plotly")
 knitr::opts_chunk$set(echo = FALSE)
 source("./scripts/neighborhoods.R")
 source("scripts/summary.R")
@@ -57,5 +60,5 @@ To determine if there has been a **change** in the _percentage of people with a 
 this percentage from 57.6%  in 2010 to 59.83% in 2016. The overall trend is that the percent of the population with a disability **increased during these years** and has been consistently higher than 50%. In 2011, the lowest percentage was reported while 2016 had the highest percentage reported. This chart does not account for type or number of disabilities but rather if an individual from this dataset in a certain year had any a disability. This information is crucial to knowing that there is a large need to address this population and that more attention should be focused on creating more accessibility in Seattle.
 
 ``` {r line_graph, echo = FALSE}
-line_graph
+line_graph_display
 ```
