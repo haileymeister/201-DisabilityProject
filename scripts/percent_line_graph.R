@@ -3,6 +3,7 @@ data_2010 <- read.csv(file =
     "data/aging-and-disability-services-client-level-data-2010.csv",
     stringsAsFactors = FALSE)
 data_2011 <- read.csv(file =
+<<<<<<< HEAD
     "data/aging-and-disability-services-client-level-data-2011.csv",
     stringsAsFactors = FALSE)
 data_2012 <- read.csv(file =
@@ -16,6 +17,21 @@ data_2014 <- read.csv(file =
     stringsAsFactors = FALSE)
 data_2015 <- read.csv(file = 
     "data/aging-and-disability-services-client-level-data-2015.csv",
+=======
+    "data/linegraph/aging-and-disability-services-client-level-data-2011.csv",
+    stringsAsFactors = FALSE)
+data_2012 <- read.csv(file =
+    "data/linegraph/aging-and-disability-services-client-level-data-2012.csv",
+    stringsAsFactors = FALSE)
+data_2013 <- read.csv(file = 
+    "data/linegraph/aging-and-disability-services-client-level-data-2013.csv",
+    stringsAsFactors = FALSE)
+data_2014 <- read.csv(file = 
+    "data/linegraph/aging-and-disability-services-client-level-data-2014.csv",
+    stringsAsFactors = FALSE)
+data_2015 <- read.csv(file = 
+    "data/linegraph/aging-and-disability-services-client-level-data-2015.csv",
+>>>>>>> 5df540b2377abf7c8f41531a1e76a0041a24e86e
     stringsAsFactors = FALSE)
 data_2016 <- read.csv(file = 
     "data/aging-and-disability-services-client-level-data-2016.csv",
@@ -31,7 +47,7 @@ data_all_years <- rbind(data_2010, data_2011, data_2012, data_2013, data_2014,
                         data_2015, data_2016)
 
 # Organizing data for Line Graph
-disability_data <- overall_data %>%
+disability_data <- data_all_years %>%
   filter(DisabilityStatus == "Y") %>%
   group_by(ServiceYear) %>%
   summarize(num_disabled = n())
