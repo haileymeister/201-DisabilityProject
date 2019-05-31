@@ -14,11 +14,10 @@ neighborhood_main_content <- mainPanel(
 )
 
 neighborhood_sidebar <- sidebarPanel(
-  fill_input <- selectInput(
-    "fill_input",
-    label = "Fill by",
-    choices = list("Homeless" = "Homeless", 
-                   "Race Code" = "RaceCode")
+  year_input <- selectInput(
+    "year_input",
+    label = "Year",
+    choices = 
   )
 )
 

@@ -6,11 +6,18 @@ library("dplyr")
 library("stringr")
 library("shiny")
 
+source("./scripts/combined_data.R")
+
+# Data wrangling
+homeless_years <- na.omit(all_data) %>%
+  select(DisabilityStatus, ServiceYear, GeographicLocation, SingleParent,
+         LiveAlone, Homeless, Veteran) %>%
+  filter(DisabilityStatus == "Y")
+
 bar_chart <- function(dataframe){
-  filtered <- filter(dataframe, str_detect(GeographicLocation,
-                                           "Seattle")) %>%
-    mutate(GeographicLocation = str_replace(GeographicLocation,
-                                            "Seattle Neighborhoods: ", ""))
+  
+  filtered <- filter(dataframe, ServiceYear == input$year_input)
+  
   disabled <- filtered %>%
     select(GeographicLocation, DisabilityStatus) %>%
     filter(DisabilityStatus == "Y",

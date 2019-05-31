@@ -4,7 +4,7 @@ library(dplyr)
 library(plotly)
 library(ggplot2)
 
-source("./scripts/neighborhoods.R")
+source("./scripts/bar_neighborhoods.R")
 
 disability_2016 <-
   read.csv("./data/aging-and-disability-services-client-level-data-2016.csv", 
