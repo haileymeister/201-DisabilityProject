@@ -4,19 +4,14 @@ library("ggplot2")
 library("plotly")
 library("dplyr")
 library("stringr")
-library("shiny")
 
-source("./scripts/combined_data.R")
 
-# Data wrangling
-homeless_years <- na.omit(all_data) %>%
-  select(DisabilityStatus, ServiceYear, GeographicLocation, SingleParent,
-         LiveAlone, Homeless, Veteran) %>%
-  filter(DisabilityStatus == "Y")
-
-bar_chart <- function(dataframe){
+bar_chart <- function(dataframe, input){
   
-  filtered <- filter(dataframe, ServiceYear == input$year_input)
+  filtered <- na.omit(dataframe) %>%
+    select(DisabilityStatus, ServiceYear, GeographicLocation, SingleParent,
+           LiveAlone, Homeless, Veteran) %>%
+    filter(DisabilityStatus == "Y")
   
   disabled <- filtered %>%
     select(GeographicLocation, DisabilityStatus) %>%
@@ -26,32 +21,37 @@ bar_chart <- function(dataframe){
     ) %>%
     group_by(GeographicLocation) %>%
     summarize(num_disabled = n())
-  homeless <- filtered %>%
-    select(GeographicLocation, DisabilityStatus, Homeless) %>%
+  
+  selected <- filtered %>%
+    select(GeographicLocation, DisabilityStatus, input$fill_input) %>%
     filter(DisabilityStatus == "Y",
            GeographicLocation != "N",
            GeographicLocation != "",
-           Homeless == "Y"
+           input$fill_input == "Y"
     ) %>%
     group_by(GeographicLocation) %>%
-    summarize(num_homeless = n())
-  joined <- left_join(disabled, homeless)
+    summarize(num_selected = n())
+  
+  joined <- left_join(disabled, selected)
+  
   bar <- ggplot(joined, aes(x = GeographicLocation,
-                            y = num_disabled, fill = num_homeless,
+                            y = num_disabled, fill = num_selected,
                             text = paste("Geographic Location:",
                                          joined$GeographicLocation, "<br>",
                                          "Number Disabled:",
                                          joined$num_disabled, "<br>",
-                                         "Number Homeless:",
-                                         joined$num_homeless))
+                                         paste0("Number ", 
+                                                input$fill_input, ":"),
+                                         joined$num_selected))
   ) +
     geom_bar(stat = "identity") +
     labs(title = "Number of People with Disabilities per Neighborhood",
          x = "Neighborhood",
          y = "Number of People",
-         fill = "Number Homeless"
+         fill = input$fill_input
     ) +
     coord_flip()
   bar_interactive <- ggplotly(bar, tooltip = "text")
   return(bar_interactive)
 }
+

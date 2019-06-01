@@ -1,26 +1,24 @@
 # Load packages
 library(shiny)
 
-# NOTE TO SELF
-# Use previous graph, try to get a neighborhood map working, focus on homelessness and disability
-# If map doesnt work than compaire homelessness over time 
-
 title_page <- tabPanel(
   "title"
 )
 
 neighborhood_main_content <- mainPanel(
-  plotlyOutput("homeless")
+  plotlyOutput("neighborhood")
 )
 
 neighborhood_sidebar <- sidebarPanel(
-  year_input <- selectInput(
-    "year_input",
-    label = "Year",
-    choices = 
+  fill_input <- selectInput(
+    "fill_input",
+    label = "Fill by",
+    choices = list("Single Parent" = "SingleParent",
+                   "Live Alone" = "LiveAlone",
+                   "Homeless" = "Homeless",
+                   "Verteran" = "Veteran")
   )
 )
-
 
 by_neighborhood <- tabPanel(
   "Neighborhoods",
