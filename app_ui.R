@@ -36,7 +36,8 @@ by_neighborhood <- tabPanel(
   sidebarLayout(
     neighborhood_sidebar,
     neighborhood_main_content
-  )
+  ),
+  p("Test")
 )
 
 page_two <- tabPanel(
