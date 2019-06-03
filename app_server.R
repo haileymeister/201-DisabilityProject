@@ -2,6 +2,8 @@
 library(shiny)
 
 source("./scripts/age_range.R")
+source("./scripts/combined_data.R")
+source("./scripts/bar_neighborhoods.R")
 
 server <- function(input, output) {
   output$neighborhood <- renderPlotly({
