@@ -14,9 +14,3 @@ server <- function(input, output) {
     return(stacked_bar_chart(data_age, input$year, input$tilt_input))
   })
 }
-
-
-  #filter(AgeRange != "40 to 44") %>%
-  #filter(AgeRange != "100 to 104") %>%
-  #filter(AgeRange != "105 to 109") %>%
-  #filter(AgeRange != "110 to 114") %>%
