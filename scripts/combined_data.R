@@ -3,7 +3,7 @@
 library("dplyr")
 library("stringr")
 
-setwd("~/info201/project-disability")
+#setwd("~/info201/project-disability")
 
 # Read in all files
 data_2010 <- read.csv(file =
