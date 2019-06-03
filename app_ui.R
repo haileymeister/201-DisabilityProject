@@ -36,7 +36,8 @@ by_neighborhood <- tabPanel(
   sidebarLayout(
     neighborhood_sidebar,
     neighborhood_main_content
-  )
+  ),
+  p("Test")
 )
 
 age_main_content <- mainPanel(
