@@ -26,7 +26,7 @@ bar_chart <- function(dataframe, fill_choice, year_input){
     group_by(GeographicLocation) %>%
     summarize(num_disabled = n())
   
-  selected <- filter1_by(filtered, fill_choice, "Y") %>%
+  selected <- filter1_by(na.omit(filtered), fill_choice, "Y") %>%
     select(GeographicLocation, fill_choice) %>%
     filter(fill_choice != "") %>%
     group_by(GeographicLocation) %>%
@@ -34,10 +34,13 @@ bar_chart <- function(dataframe, fill_choice, year_input){
   
   joined <- left_join(disabled, selected)
   
-  labels = list("SingleParent" = "Single Parent",
-                "LiveAlone" = "Live Alone",
+  labels = list("Single Parent" = "SingleParent",
+                "Live Alone" = "LiveAlone",
                 "Homeless" = "Homeless",
-                "Veteran" = "Veteran")
+                "Veteran" = "Veteran",
+                "Driving" = "Driving", 
+                "Household With Children" = "HouseholdWithChildren",
+                "Limited English" = "LimitedEnglish")
   
   formatted_label <- labels[[fill_choice]]
   

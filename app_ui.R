@@ -44,7 +44,10 @@ neighborhood_sidebar <- sidebarPanel(
     choices = list("Single Parent" = "SingleParent",
                    "Live Alone" = "LiveAlone",
                    "Homeless" = "Homeless",
-                   "Verteran" = "Veteran"),
+                   "Veteran" = "Veteran",
+                   "Driving" = "Driving", 
+                   "Household With Children" = "HouseholdWithChildren",
+                   "Limited English" = "LimitedEnglish"),
     selected = list("Single Parent" = "SingleParent")
   ),
   year_input <- radioButtons(
@@ -64,8 +67,7 @@ by_neighborhood <- tabPanel(
   sidebarLayout(
     neighborhood_sidebar,
     neighborhood_main_content
-  ),
-  p("Test")
+  )
 )
 
 age_main_content <- mainPanel(
@@ -74,7 +76,7 @@ age_main_content <- mainPanel(
 
 age_sidebar <- sidebarPanel(
   year_input <- selectInput(
-    "year_input",
+    "year",
     label = "Year",
     choices = list("2010", "2011", "2012",
                    "2013", "2014", "2015", "2016"),

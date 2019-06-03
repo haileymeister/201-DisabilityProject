@@ -3,6 +3,8 @@
 library("dplyr")
 library("stringr")
 
+setwd("~/info201/project-disability")
+
 # Read in all files
 data_2010 <- read.csv(file =
              "data/aging-and-disability-services-client-level-data-2010.csv",
@@ -34,8 +36,7 @@ cleaned <- na.omit(all_data) %>%
   select(-ActivityID, -ClientID, -AgencyID, -ContractID, -Unincorporated,
          -RelationshipToRecipientCode, -DivisionID, -SiteID, -ServiceTypeID,
          -UnitsProvidedType, -ServiceAreaID, -UnitsProvided, 
-         -NutritionalRisk, -ServiceMonth, -EthnicityCode)
-
+         -ServiceMonth, -EthnicityCode)
 
 # ADLS - Activities of Daily Living
 non_adls <- all_data %>%
