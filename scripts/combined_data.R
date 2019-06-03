@@ -34,11 +34,8 @@ cleaned <- na.omit(all_data) %>%
   select(-ActivityID, -ClientID, -AgencyID, -ContractID, -Unincorporated,
          -RelationshipToRecipientCode, -DivisionID, -SiteID, -ServiceTypeID,
          -UnitsProvidedType, -ServiceAreaID, -UnitsProvided, 
-         -NutritionalRisk, -ServiceMonth, -EthnicityCode) %>%
-  mutate(GeographicLocation = str_replace(GeographicLocation,
-                                          "Seattle Neighborhoods: ", ""))
+         -NutritionalRisk, -ServiceMonth, -EthnicityCode)
 
-  #mutate_all(str_replace_all, "N", "No")
 
 # ADLS - Activities of Daily Living
 non_adls <- all_data %>%
@@ -52,3 +49,4 @@ adls <- all_data %>%
          GettingPlaces, Transferring, Dressing, Bathing, MedicalManagement, 
          Cooking, Shopping, Chores, Driving, HeavyHousework, Phoning,
          MoneyManagement) 
+

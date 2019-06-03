@@ -9,6 +9,6 @@ source("./scripts/combined_data.R")
 
 server <- function(input, output) {
   output$neighborhood <- renderPlotly({
-    bar_chart(cleaned, input)
+    return(bar_chart(cleaned, input$fill_input, input$year_input))
   })
 }

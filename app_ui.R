@@ -16,15 +16,22 @@ neighborhood_sidebar <- sidebarPanel(
     choices = list("Single Parent" = "SingleParent",
                    "Live Alone" = "LiveAlone",
                    "Homeless" = "Homeless",
-                   "Verteran" = "Veteran")
+                   "Verteran" = "Veteran"),
+    selected = list("Single Parent" = "SingleParent")
+  ),
+  year_input <- radioButtons(
+    "year_input",
+    label = "Year",
+    choices = 2010:2016,
+    selected = "2010"
   )
 )
 
 by_neighborhood <- tabPanel(
   "Neighborhoods",
   titlePanel("Disability by Seattle Neighborhood"),
-  p("The information below seeks to display information on disability in the
-    different Seattle neighborhoods."),
+  p("The information below seeks to display different aspects of disability
+    across 12 Seattle neighborhoods and areas."),
   
   sidebarLayout(
     neighborhood_sidebar,
