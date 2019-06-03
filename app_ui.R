@@ -39,8 +39,39 @@ by_neighborhood <- tabPanel(
   )
 )
 
-page_two <- tabPanel(
-  "page two"
+age_main_content <- mainPanel(
+  plotlyOutput("ages")
+)
+
+age_sidebar <- sidebarPanel(
+  year_input <- selectInput(
+    "year_input",
+    label = "Year",
+    choices = list("2010", "2011", "2012",
+                   "2013", "2014", "2015", "2016"),
+    selected = "2016"
+  ),
+  color_input <- selectInput(
+    "color_input",
+    label = "Color",
+    choices = list("Blue" = "blue", 
+                   "Red" = "red", 
+                   "Green" = "green",
+                   "Yellow" = "yellow", 
+                   "Pink" = "pink", 
+                   "Purple" = "purple")
+  )
+)
+
+page_age <- tabPanel(
+  "Age Range",
+  titlePanel("Disability by Age Range in Seattle"),
+  p("The chart displays data about disability in Seattle, sorted by age range,
+    across 7 years."),
+  sidebarLayout(
+    age_main_content,
+    age_sidebar
+  )
 )
 
 page_three <- tabPanel(
@@ -55,7 +86,7 @@ ui <- navbarPage(
   "Disability in Seattle, WA",
   title_page, 
   by_neighborhood,
-  page_two,
+  page_age,
   page_three,
   sum_page
 )
