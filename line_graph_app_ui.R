@@ -1,5 +1,6 @@
 # Load packages
 library(shiny)
+library(plotly)
 
 page_two <- tabPanel(
   "Demographics of Seattle through 2010 to 2016",
@@ -9,11 +10,10 @@ page_two <- tabPanel(
 
 #Main panel
 disability_by_year <- mainPanel(
-  plotOutput("demo_linegraph")
+  plotlyOutput("demo_linegraph")
 )
 
 #Sidebar panel Widget
-
 demo_sidebar <- sidebarPanel(
   variable_input <- selectInput(
     "variable_input",
@@ -21,7 +21,7 @@ demo_sidebar <- sidebarPanel(
     choices = list("Disability Status" = "DisabilityStatus",
                    "Veteran Status" = "Veteran",
                    "Homeless" = "Homeless",
-                   "Driving Ability" = "Driving",
+                   "Driving Impairment" = "Driving",
                    "Limited English"= "LimitedEnglish",
                    "Households with Children" = "HouseholdWithChildren"),
     selected = list("Disability Status" = "DisabilityStatus")

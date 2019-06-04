@@ -4,11 +4,11 @@ library(plotly)
 library(ggplot2)
 
 # Sourced Data
-source("demo_linegraph.R")
+source("./scripts/demo_linegraph.R")
+source("./scripts/combined_data.R")
 
 # Figure Function
 server <- function(input, output) {
-  print(variable_input)
   output$demo_linegraph <- renderPlot({
     return(demo_linegraph(cleaned, input$variable_input))
   })
