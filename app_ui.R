@@ -106,9 +106,9 @@ page_three <- tabPanel(
 sum_page <- tabPanel(
   "Summary",
   h1("What We Learned"),
-  h2("Takeaway 1"),
-  h2("Takeaway 2"),
-  h2("Takeaway 3")
+  h2("Seattle Neighborhoods"),
+  h2("Disability by Age"),
+  h2("Changes Over Time")
 )
 
 ui <- navbarPage(
