@@ -5,7 +5,6 @@ library("tidyverse")
 
 # Function for making the Line Graph
 demo_linegraph <- function(cleaned, variable_input) {
-  print(variable_input)
   disability_data <- cleaned %>%
     filter(!!as.name(variable_input) == "Y") %>%
     group_by(ServiceYear) %>%
