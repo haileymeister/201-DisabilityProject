@@ -1,10 +1,13 @@
 # Load packages
 library(shiny)
+library(shinyWidgets)
+
 
 title_page <- tabPanel(
   "About Disability",
   h1("What is Disability?"),
-  img("", src = "https://www.insidehighered.com/sites/default/server_files/media/amir%20disability.jpg"),
+  img("", src = "https://www.insidehighered.com/sites/default/server_files/media/amir%20disability.jpg",
+           width = "800px", height ="300px"),
   p("Disability can be categoriezed by many different factors. It can be
     physical or mental and can present itself in multiple forms. As disability
     becomes a greater topic of conversation, the ", em("scale"), " of 
@@ -14,7 +17,9 @@ title_page <- tabPanel(
   p(
     "The data used in this website is provided from the ",
     a("SEA Aging and Disability Services",
-      href = "https://www.kaggle.com/city-of-seattle/sea-aging-and-disability-services-client-level"
+      href = "https://www.kaggle.com/city-of-seattle/sea-aging-and-disability-services-client-level",
+      style = "color: #EBECEC; text-decoration: underline; margin-left: auto; 
+      margin-right auto;"
     ),
     "."
   ), 
@@ -28,7 +33,7 @@ title_page <- tabPanel(
     understand what groups need the most attention when it comes to 
     accessibility around the city. The final aspect of disability we want to
     discover is the overall change of disability status in Seattle."),
-  p(""),
+  tags$br(),
   p("Website created by: Katie Brower, Sophie Hurst, Emily Kong, and Hailey
     Meister")
 )
@@ -41,14 +46,13 @@ neighborhood_sidebar <- sidebarPanel(
   fill_input <- selectInput(
     "fill_input",
     label = "Fill by",
-    choices = list("Single Parent" = "SingleParent",
-                   "Live Alone" = "LiveAlone",
+    choices = list("Live Alone" = "LiveAlone",
                    "Homeless" = "Homeless",
                    "Veteran" = "Veteran",
                    "Driving" = "Driving", 
                    "Household With Children" = "HouseholdWithChildren",
                    "Limited English" = "LimitedEnglish"),
-    selected = list("Single Parent" = "SingleParent")
+    selected = list("Live Alone" = "LiveAlone")
   ),
   year_input <- radioButtons(
     "year_input",
@@ -60,13 +64,32 @@ neighborhood_sidebar <- sidebarPanel(
 
 by_neighborhood <- tabPanel(
   "Neighborhoods",
-  titlePanel("Disability by Seattle Neighborhood"),
+  h1("Disability Traits by Seattle Neighborhood"),
   p("The information below seeks to display different aspects of disability
-    across 12 Seattle neighborhoods and areas."),
+    across", strong("12 Seattle neighborhoods and areas."),"The chart below can 
+    be filled by information on how many people with Disabilities live alone, 
+    are homeless, are Veterans, can drive, live in a house with children, and 
+    speak limited English. The chart is able to clearly depict which Seattle 
+    neighborhood has the highest population of people with Disabilities based 
+    on the chosen year."
+  ),
   
   sidebarLayout(
     neighborhood_sidebar,
     neighborhood_main_content
+  ), 
+  p("Overall however from the data one can see that Seattle has problems with 
+    certain aspects of acessibility. Acessibility is defined by the Merriam 
+    Webster dictionary as,", strong("easily used or acessed by people with disabilities: 
+    adapted for use by people with disabilities"), ". Acessibility attempts to 
+    make", em("everything available to everyone"), ". It seeks to cut out 
+    barriers that people with disabilities might face because of their different
+    abilities. Understanding acessability is important when designing anything 
+    because everyone deserves the right to acess everything. There are many 
+    aspects of society today that hinder those with disabilities from 
+    participating in certain aspects of daily life but if universal design
+    principles had been utilized than everyone would have equal access to
+    everything."
   )
 )
 
@@ -111,11 +134,33 @@ sum_page <- tabPanel(
   h2("Takeaway 3")
 )
 
-ui <- navbarPage(
-  "Disability Through Time",
-  title_page, 
-  by_neighborhood,
-  page_age,
-  page_three,
-  sum_page
+
+ui <- fluidPage(
+  setBackgroundColor(color = "#656A72"),
+  
+  tags$head(
+    tags$style(
+      HTML(
+        "p {
+          color: #EBECEC;
+          }
+        h1 {
+          color: #EBECEC;
+        }
+        h2 {
+          color: #EBECEC;
+        }"
+        )
+      )
+    ),
+  
+  navbarPage( 
+    inverse = TRUE,
+    "Disability Through Time",
+    title_page, 
+    by_neighborhood,
+    page_age,
+    page_three,
+    sum_page
+  )
 )
