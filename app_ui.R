@@ -8,7 +8,8 @@ title_page <- tabPanel(
   img("", src =
         paste0("https://www.insidehighered.com/sites/default/",
                "server_files/media/amir%20disability.jpg"),
-           width = "700px", height = "300px"),
+           width = "700px", height = "300px", style = "margin-left: auto;
+           margin-right: auto;"),
   br(),
   p("Disability can be categoriezed by many different factors. It can be
     physical or mental and can present itself in multiple forms. As disability
@@ -21,8 +22,7 @@ title_page <- tabPanel(
     a("SEA Aging and Disability Services",
       href = "https://www.kaggle.com/city-of-seattle
       /sea-aging-and-disability-services-client-level",
-      style = "color: #EBECEC; text-decoration: underline; margin-left: auto;
-      margin-right: auto;"
+      style = "color: #EBECEC; text-decoration: underline;"
     ),
     "."
   ),
