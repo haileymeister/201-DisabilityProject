@@ -1,10 +1,10 @@
 # Neighborhoods Final
 
-library("ggplot2")
-library("plotly")
-library("dplyr")
-library("stringr")
-library("scales")
+library(ggplot2)
+library(plotly)
+library(dplyr)
+library(stringr)
+library(scales)
 
 source("./scripts/filter_dynamic_column.R")
 
@@ -12,8 +12,7 @@ bar_chart <- function(dataframe, fill_choice, year_input){
   
   filtered <- na.omit(dataframe) %>%
     select(GeographicLocation, DisabilityStatus, ServiceYear, fill_choice) %>%
-    filter(str_detect(GeographicLocation, "Seattle"), 
-           ServiceYear == year_input) %>%
+    filter(str_detect(GeographicLocation, "Seattle")) %>%
     mutate(GeographicLocation = str_replace(GeographicLocation,
                                             "Seattle Neighborhoods: ", "")) %>%
     mutate_all(str_replace_all, "y", "Y") %>%
@@ -22,25 +21,27 @@ bar_chart <- function(dataframe, fill_choice, year_input){
            GeographicLocation != "")
   
   disabled <- filtered %>%
-    select(GeographicLocation, DisabilityStatus) %>%
+    select(GeographicLocation, DisabilityStatus, ServiceYear) %>%
+    mutate_if(is.numeric, toString) %>%
+    filter(ServiceYear == year_input) %>%
     group_by(GeographicLocation) %>%
     summarize(num_disabled = n())
   
   selected <- filter1_by(na.omit(filtered), fill_choice, "Y") %>%
-    select(GeographicLocation, fill_choice) %>%
-    filter(fill_choice != "") %>%
+    select(GeographicLocation, fill_choice, ServiceYear) %>%
+    mutate_if(is.numeric, toString) %>%
+    filter(ServiceYear == year_input, fill_choice != "") %>%
     group_by(GeographicLocation) %>%
     summarize(num_selected = n())
   
   joined <- left_join(disabled, selected)
   
-  labels = list("Single Parent" = "SingleParent",
-                "Live Alone" = "LiveAlone",
+  labels = list("LiveAlone" = "Live Alone",
                 "Homeless" = "Homeless",
                 "Veteran" = "Veteran",
                 "Driving" = "Driving", 
-                "Household With Children" = "HouseholdWithChildren",
-                "Limited English" = "LimitedEnglish")
+                "HouseholdWithChildren" = "Household With Children",
+                "LimitedEnglish" = "Limited English")
   
   formatted_label <- labels[[fill_choice]]
   
@@ -52,7 +53,7 @@ bar_chart <- function(dataframe, fill_choice, year_input){
                                          joined$num_disabled, "<br>",
                                          paste0("Number ", 
                                                 formatted_label, ":"),
-                                              joined$num_selected
+                                         joined$num_selected
                                          )
                             )
   ) +
