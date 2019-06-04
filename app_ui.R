@@ -127,8 +127,28 @@ page_age <- tabPanel(
   )
 )
 
-page_three <- tabPanel(
-  "page three"
+scatter_main <- mainPanel(
+  plotlyOutput("demo_linegraph")
+)
+
+scatter_sidebar <- sidebarPanel(
+  variable_input <- selectInput(
+    "variable_input",
+    label = "Demographic Variable of Interest",
+    choices = list("Disability Status" = "DisabilityStatus",
+                   "Veteran Status" = "Veteran",
+                   "Homeless" = "Homeless",
+                   "Driving Impairment" = "Driving",
+                   "Limited English"= "LimitedEnglish",
+                   "Households with Children" = "HouseholdWithChildren"),
+    selected = list("Disability Status" = "DisabilityStatus")
+  )
+)
+
+scatter_tab <- tabPanel(
+  "Demographics of Seattle through 2010 to 2016",
+  scatter_main,
+  scatter_sidebar
 )
 
 sum_page <- tabPanel(
@@ -164,7 +184,7 @@ ui <- fluidPage(
     title_page,
     by_neighborhood,
     page_age,
-    page_three,
+    scatter_tab,
     sum_page
   )
 )
