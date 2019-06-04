@@ -4,28 +4,31 @@ library(shiny)
 title_page <- tabPanel(
   "About Disability",
   h1("What is Disability?"),
-  img("", src = "https://www.insidehighered.com/sites/default/server_files/media/amir%20disability.jpg"),
+  img("", src =
+        "https://www.insidehighered.com/sites/default/server_files
+        /media/amir%20disability.jpg"),
   p("Disability can be categoriezed by many different factors. It can be
     physical or mental and can present itself in multiple forms. As disability
-    becomes a greater topic of conversation, the ", em("scale"), " of 
+    becomes a greater topic of conversation, the ", em("scale"), " of
     disability needs to be recognized to figure out how to better serve that
     community as a whole."),
   h2("Data Source"),
   p(
     "The data used in this website is provided from the ",
     a("SEA Aging and Disability Services",
-      href = "https://www.kaggle.com/city-of-seattle/sea-aging-and-disability-services-client-level"
-    ),
+      href =
+        "https://www.kaggle.com/city-of-seattle
+      /sea-aging-and-disability-services-client-level"),
     "."
-  ), 
+  ),
   h2("Why Disability?"),
   p("We aim to look at an overview of the Seattle, WA disability community to
     see where ", em("accessibility"), " may need to be improved uopn. We want
     to see how disability has ", strong("changed"), " from 2010-2016 in
-    different Seattle neighborhoods, as well as the differences between these 
-    neighborhoods. The next question we want to look at is what the difference 
+    different Seattle neighborhoods, as well as the differences between these
+    neighborhoods. The next question we want to look at is what the difference
     between age groups is in the disabled community. This will help us
-    understand what groups need the most attention when it comes to 
+    understand what groups need the most attention when it comes to
     accessibility around the city. The final aspect of disability we want to
     discover is the overall change of disability status in Seattle."),
   p(""),
@@ -45,7 +48,7 @@ neighborhood_sidebar <- sidebarPanel(
                    "Live Alone" = "LiveAlone",
                    "Homeless" = "Homeless",
                    "Veteran" = "Veteran",
-                   "Driving" = "Driving", 
+                   "Driving" = "Driving",
                    "Household With Children" = "HouseholdWithChildren",
                    "Limited English" = "LimitedEnglish"),
     selected = list("Single Parent" = "SingleParent")
@@ -63,7 +66,7 @@ by_neighborhood <- tabPanel(
   titlePanel("Disability by Seattle Neighborhood"),
   p("The information below seeks to display different aspects of disability
     across 12 Seattle neighborhoods and areas."),
-  
+
   sidebarLayout(
     neighborhood_sidebar,
     neighborhood_main_content
@@ -113,7 +116,7 @@ sum_page <- tabPanel(
 
 ui <- navbarPage(
   "Disability Through Time",
-  title_page, 
+  title_page,
   by_neighborhood,
   page_age,
   page_three,

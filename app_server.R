@@ -11,7 +11,7 @@ server <- function(input, output) {
   output$neighborhood <- renderPlotly({
     return(bar_chart(cleaned, input$fill_input, input$year_input))
   })
-  
+
   output$ages <- renderPlotly({
     return(stacked_bar_chart(data_age, input$year, input$tilt_input))
   })
