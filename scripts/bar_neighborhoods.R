@@ -34,13 +34,13 @@ bar_chart <- function(dataframe, fill_choice, year_input){
   
   joined <- left_join(disabled, selected)
   
-  labels = list("Single Parent" = "SingleParent",
-                "Live Alone" = "LiveAlone",
+  labels = list("SingleParent" = "Single Parent",
+                "LiveAlone" = "Live Alone",
                 "Homeless" = "Homeless",
                 "Veteran" = "Veteran",
                 "Driving" = "Driving", 
-                "Household With Children" = "HouseholdWithChildren",
-                "Limited English" = "LimitedEnglish")
+                "HouseholdWithChildren" = "Household With Children",
+                "LimitedEnglish" = "Limited English")
   
   formatted_label <- labels[[fill_choice]]
   
