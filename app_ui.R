@@ -9,22 +9,24 @@ title_page <- tabPanel(
         paste0("https://www.insidehighered.com/sites/default/",
                "server_files/media/amir%20disability.jpg"),
            width = "700px", height = "300px"),
+  br(),
   p("Disability can be categoriezed by many different factors. It can be
     physical or mental and can present itself in multiple forms. As disability
     becomes a greater topic of conversation, the ", em("scale"), " of
     disability needs to be recognized to figure out how to better serve that
     community as a whole."),
+  
   h2("Data Source"),
-  p(
-    "The data used in this website is provided from the ",
+  p("The data used in this website is provided from the ",
     a("SEA Aging and Disability Services",
       href = "https://www.kaggle.com/city-of-seattle
       /sea-aging-and-disability-services-client-level",
       style = "color: #EBECEC; text-decoration: underline; margin-left: auto;
-      margin-right auto;"
+      margin-right: auto;"
     ),
     "."
   ),
+  
   h2("Why Disability?"),
   p("We aim to look at an overview of the Seattle, WA disability community to
     see where ", em("accessibility"), " may need to be improved uopn. We want
@@ -80,6 +82,7 @@ by_neighborhood <- tabPanel(
     neighborhood_sidebar,
     neighborhood_main_content
   ),
+  tags$br(),
   p("Overall however from the data one can see that Seattle has problems with
     certain aspects of acessibility. Acessibility is defined by the Merriam
     Webster dictionary as,", strong("easily used or acessed by people with
