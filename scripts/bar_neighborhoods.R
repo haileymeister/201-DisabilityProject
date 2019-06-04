@@ -45,7 +45,7 @@ bar_chart <- function(dataframe, fill_choice, year_input){
   
   formatted_label <- labels[[fill_choice]]
   
-  bar <- ggplot(joined, aes(x = GeographicLocation,
+  bar <- ggplot(joined, aes(x = reorder(GeographicLocation, num_disabled),
                             y = num_disabled, fill = num_selected,
                             text = paste("Geographic Location:",
                                          joined$GeographicLocation, "<br>",
@@ -56,12 +56,12 @@ bar_chart <- function(dataframe, fill_choice, year_input){
                                          joined$num_selected
                                          )
                             )
-  ) +
+  ) + 
     geom_bar(stat = "identity") +
     labs(title = paste0("Population with Disabilities per Neighborhood in ",
                         year_input),
          x = "Neighborhood",
-         y = "Number of People",
+         y = "Number of People With Disabilities",
          fill = formatted_label
     ) +
     coord_flip() + 
