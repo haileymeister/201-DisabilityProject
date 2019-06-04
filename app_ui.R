@@ -5,8 +5,10 @@ library(shinyWidgets)
 title_page <- tabPanel(
   "About Disability",
   h1("What is Disability?"),
-  img("", src = "https://www.insidehighered.com/sites/default/server_files/media/amir%20disability.jpg",
-           width = "800px", height ="300px"),
+  img("", src =
+        paste0("https://www.insidehighered.com/sites/default/",
+               "server_files/media/amir%20disability.jpg"),
+           width = "700px", height = "300px"),
   p("Disability can be categoriezed by many different factors. It can be
     physical or mental and can present itself in multiple forms. As disability
     becomes a greater topic of conversation, the ", em("scale"), " of
@@ -18,7 +20,7 @@ title_page <- tabPanel(
     a("SEA Aging and Disability Services",
       href = "https://www.kaggle.com/city-of-seattle
       /sea-aging-and-disability-services-client-level",
-      style = "color: #EBECEC; text-decoration: underline; margin-left: auto; 
+      style = "color: #EBECEC; text-decoration: underline; margin-left: auto;
       margin-right auto;"
     ),
     "."
@@ -66,30 +68,30 @@ by_neighborhood <- tabPanel(
   "Neighborhoods",
   h1("Disability Traits by Seattle Neighborhood"),
   p("The information below seeks to display different aspects of disability
-    across", strong("12 Seattle neighborhoods and areas."),"The chart below can 
-    be filled by information on how many people with Disabilities live alone, 
-    are homeless, are Veterans, can drive, live in a house with children, and 
-    speak limited English. The chart is able to clearly depict which Seattle 
-    neighborhood has the highest population of people with Disabilities based 
+    across", strong("12 Seattle neighborhoods and areas."), "The chart below can
+    be filled by information on how many people with Disabilities live alone,
+    are homeless, are Veterans, can drive, live in a house with children, and
+    speak limited English. The chart is able to clearly depict which Seattle
+    neighborhood has the highest population of people with Disabilities based
     on the chosen year."
   ),
-  
+
   sidebarLayout(
     neighborhood_sidebar,
     neighborhood_main_content
-  ), 
-  p("Overall however from the data one can see that Seattle has problems with 
-    certain aspects of acessibility. Acessibility is defined by the Merriam 
-    Webster dictionary as,", strong("easily used or acessed by people with disabilities: 
-    adapted for use by people with disabilities"), ". Acessibility attempts to 
-    make", em("everything available to everyone"), ". It seeks to cut out 
-    barriers that people with disabilities might face because of their different
-    abilities. Understanding acessability is important when designing anything 
-    because everyone deserves the right to acess everything. There are many 
-    aspects of society today that hinder those with disabilities from 
-    participating in certain aspects of daily life but if universal design
-    principles had been utilized than everyone would have equal access to
-    everything."
+  ),
+  p("Overall however from the data one can see that Seattle has problems with
+    certain aspects of acessibility. Acessibility is defined by the Merriam
+    Webster dictionary as,", strong("easily used or acessed by people with
+    disabilities: adapted for use by people with disabilities"),
+    ". Acessibility attempts to make", em("everything available to everyone"),
+    ". It seeks to cut out barriers that people with disabilities might face
+    because of their different abilities. Understanding acessability is
+    important when designing anything because everyone deserves the right
+    to acess everything. There are many aspects of society today that hinder
+    those with disabilities from participating in certain aspects of daily
+    life but if universal design principles had been utilized than everyone
+    would have equal access to everything."
   )
 )
 
@@ -136,7 +138,7 @@ sum_page <- tabPanel(
 
 ui <- fluidPage(
   setBackgroundColor(color = "#656A72"),
-  
+
   tags$head(
     tags$style(
       HTML(
@@ -152,11 +154,11 @@ ui <- fluidPage(
         )
       )
     ),
-  
-  navbarPage( 
+
+  navbarPage(
     inverse = TRUE,
     "Disability Through Time",
-    title_page, 
+    title_page,
     by_neighborhood,
     page_age,
     page_three,
