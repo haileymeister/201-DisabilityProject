@@ -13,6 +13,7 @@ server <- function(input, output) {
   })
 
   output$ages <- renderPlotly({
-    return(stacked_bar_chart(data_age, input$year, input$tilt_input))
+    return(stacked_bar_chart(data_age, input$year,
+                             input$tilt_input, input$pal_input))
   })
 }

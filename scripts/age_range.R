@@ -4,7 +4,7 @@ library("tidyverse")
 library("ggplot2")
 library("plotly")
 
-stacked_bar_chart <- function(data_age, year, tilt) {
+stacked_bar_chart <- function(data_age, year, tilt, pal) {
   data_age <- na.omit(get(paste0("data_", year))) %>%
     select(AgeRange, LiveAlone, DisabilityStatus, NutritionalRisk) %>%
     filter(str_detect(AgeRange, "to")) %>%
@@ -36,12 +36,13 @@ stacked_bar_chart <- function(data_age, year, tilt) {
                     NumPeople)
       )) +
     geom_bar(stat = "identity") +
-    labs(title = paste0("Number of People with Disadvantages
-                        Based on Age in ", year),
+    labs(title =
+           paste0("People Suffering Disadvantages by Age Range in ", year),
          x = "Age Range",
          y = "Number of People",
-         fill = "Disadvantage Status"
-    ) + theme(axis.text.x = element_text(angle = tilt))
+         fill = "Disadvantages:"
+    ) + theme(axis.text.x = element_text(angle = tilt)) +
+    scale_fill_brewer(palette = pal)
 
   plot <- ggplotly(age_plot, tooltip = "text")
   return(plot)

@@ -107,17 +107,36 @@ age_sidebar <- sidebarPanel(
                    "2013", "2014", "2015", "2016"),
     selected = "2016"
   ),
+  pal_input <- selectInput(
+    "pal_input",
+    label = "Colors",
+    choices = list("Paired", "Set1",
+                   "Set2", "Pastel1", 
+                   "Pastel2", "Spectral"),
+    selected = "Paired"
+    ),
   tilt_input <- sliderInput(
     "tilt_input",
-    label = "Tilt of X-Axis", min = 25, max = 90, value = 30
+    label = "Tilt of X-Axis Label", min = 25, max = 90, value = 30
   )
 )
 
 page_age <- tabPanel(
   "Age Range",
   titlePanel("Disability by Age Range in Seattle"),
-  p("The chart displays data about disability in Seattle, sorted by age range,
-    across 7 years."),
+  p("We can see from the interactive stacked bar charts which",
+    em("age ranges"), "suffer the most from disadvantaging
+    statuses between the years", strong("2010-2016"), ". We
+    determine disadvantages as whether or not the
+    clients have a,", em("disability"), ", whether or not the they",
+    em("live alone"), ", and whether or not they suffer",
+    em("high nutrition risk"), ". We can see the people between the ages",
+    strong("70-84"), "seem to deal with the most disadvantages amongst
+    all 7 years. Hovering over the interactive charts shows the
+    exact number of people in each category under
+    each age range. We can use this information to decide which
+    age groups need the most help with increasing accessibility."),
+  tags$br(),
   sidebarLayout(
     age_sidebar,
     age_main_content
