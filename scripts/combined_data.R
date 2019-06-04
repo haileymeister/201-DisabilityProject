@@ -1,7 +1,7 @@
 # Edited Dataframe
 
-library("dplyr")
-library("stringr")
+library(dplyr)
+library(stringr)
 
 # Read in all files
 data_2010 <- read.csv(file =
