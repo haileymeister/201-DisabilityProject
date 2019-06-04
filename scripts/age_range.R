@@ -41,8 +41,7 @@ stacked_bar_chart <- function(data_age, year, tilt) {
          x = "Age Range",
          y = "Number of People",
          fill = "Disadvantage Status"
-    ) + theme(axis.text.x = element_text(angle = 30)) +
-    scale_color_brewer(palette = "Set2")
+    ) + theme(axis.text.x = element_text(angle = tilt))
 
   plot <- ggplotly(age_plot, tooltip = "text")
   return(plot)
