@@ -1,64 +1,24 @@
-# Load Data
-data_2010 <- read.csv(file =
-    "data/aging-and-disability-services-client-level-data-2010.csv",
-    stringsAsFactors = FALSE)
-data_2011 <- read.csv(file =
-<<<<<<< HEAD
-    "data/aging-and-disability-services-client-level-data-2011.csv",
-    stringsAsFactors = FALSE)
-data_2012 <- read.csv(file =
-    "data/aging-and-disability-services-client-level-data-2012.csv",
-    stringsAsFactors = FALSE)
-data_2013 <- read.csv(file = 
-    "data/aging-and-disability-services-client-level-data-2013.csv",
-    stringsAsFactors = FALSE)
-data_2014 <- read.csv(file = 
-    "data/aging-and-disability-services-client-level-data-2014.csv",
-    stringsAsFactors = FALSE)
-data_2015 <- read.csv(file = 
-    "data/aging-and-disability-services-client-level-data-2015.csv",
-=======
-    "data/linegraph/aging-and-disability-services-client-level-data-2011.csv",
-    stringsAsFactors = FALSE)
-data_2012 <- read.csv(file =
-    "data/linegraph/aging-and-disability-services-client-level-data-2012.csv",
-    stringsAsFactors = FALSE)
-data_2013 <- read.csv(file = 
-    "data/linegraph/aging-and-disability-services-client-level-data-2013.csv",
-    stringsAsFactors = FALSE)
-data_2014 <- read.csv(file = 
-    "data/linegraph/aging-and-disability-services-client-level-data-2014.csv",
-    stringsAsFactors = FALSE)
-data_2015 <- read.csv(file = 
-    "data/linegraph/aging-and-disability-services-client-level-data-2015.csv",
->>>>>>> 5df540b2377abf7c8f41531a1e76a0041a24e86e
-    stringsAsFactors = FALSE)
-data_2016 <- read.csv(file = 
-    "data/aging-and-disability-services-client-level-data-2016.csv",
-    stringsAsFactors = FALSE)
+# sourced data
+source("scripts/combined_data.R")
 
 # Loading Packages
 library("dplyr")
 library("ggplot2")
 library("lintr")
 
-# Combining Raw Data Together
-data_all_years <- rbind(data_2010, data_2011, data_2012, data_2013, data_2014, 
-                        data_2015, data_2016)
-
 # Organizing data for Line Graph
-disability_data <- data_all_years %>%
+disability_data <- cleaned %>%
   filter(DisabilityStatus == "Y") %>%
   group_by(ServiceYear) %>%
   summarize(num_disabled = n())
 
 # Data Sorted by Year
-data_sorted_by_year <- data_all_years %>%
+data_sorted_by_year <- cleaned %>%
   group_by(ServiceYear) %>%
   summarize(num_all = n())
 
 # Joining Data Together for Line Graph
-data <- left_join(disability_data, data_sorted_by_year,
+data_joined_service_year <- left_join(disability_data, data_sorted_by_year,
                                      "ServiceYear")
 
 # Function for making the Line Graph

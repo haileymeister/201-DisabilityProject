@@ -36,24 +36,23 @@ bar_chart <- function(dataframe, fill_choice, year_input){
   
   joined <- left_join(disabled, selected)
   
-  labels = list("LiveAlone" = "Live Alone",
+  labels <- list("LiveAlone" = "Live Alone",
                 "Homeless" = "Homeless",
                 "Veteran" = "Veteran",
-                "Driving" = "Driving", 
+                "Driving" = "Driving",
                 "HouseholdWithChildren" = "Household With Children",
                 "LimitedEnglish" = "Limited English")
   
   formatted_label <- labels[[fill_choice]]
   
-  bar <- ggplot(joined, aes(x = GeographicLocation,
+  bar <- ggplot(joined, aes(x = reorder(GeographicLocation, num_disabled),
                             y = num_disabled, fill = num_selected,
                             text = paste("Geographic Location:",
-                                         joined$GeographicLocation, "<br>",
+                                         GeographicLocation, "<br>",
                                          "Number Disabled:",
-                                         joined$num_disabled, "<br>",
-                                         paste0("Number ", 
-                                                formatted_label, ":"),
-                                         joined$num_selected
+                                         num_disabled, "<br>",
+                                         paste0("Number ", formatted_label,
+                                                ": ", num_selected)
                                          )
                             )
   ) +
@@ -61,12 +60,13 @@ bar_chart <- function(dataframe, fill_choice, year_input){
     labs(title = paste0("Population with Disabilities per Neighborhood in ",
                         year_input),
          x = "Neighborhood",
-         y = "Number of People",
+         y = "Number of People With Disabilities",
          fill = formatted_label
     ) +
-    coord_flip() + 
+    coord_flip() +
     scale_y_continuous(labels = comma)
+  
   bar_interactive <- ggplotly(bar, tooltip = "text")
+  
   return(bar_interactive)
 }
-

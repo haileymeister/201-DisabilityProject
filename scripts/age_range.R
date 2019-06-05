@@ -4,7 +4,7 @@ library("tidyverse")
 library("ggplot2")
 library("plotly")
 
-stacked_bar_chart <- function(data_age, year, tilt) {
+stacked_bar_chart <- function(data_age, year, tilt, pal) {
   data_age <- na.omit(get(paste0("data_", year))) %>%
     select(AgeRange, LiveAlone, DisabilityStatus, NutritionalRisk) %>%
     filter(str_detect(AgeRange, "to")) %>%
@@ -21,24 +21,28 @@ stacked_bar_chart <- function(data_age, year, tilt) {
       x = factor(AgeRange, levels = c("40 to 44", "45 to 49",
                                       "50 to 54", "55 to 59",
                                       "60 to 64", "65 to 69",
-                                      "70 to 74", "75 to 79", "80 to 84",
-                                      "85 to 89", "90 to 94", "95 to 99",
+                                      "70 to 74", "75 to 79",
+                                      "80 to 84", "85 to 89",
+                                      "90 to 94", "95 to 99",
                                       "100 to 104", "105 to 109",
                                       "110 to 114")),
                                    y = NumPeople,
-                                   fill = LivingStatus),
-      text = paste0("Disability Status: ",
-                   LivingStatus, "<br>",
-                   "Number of People: ",
-                   NumPeople
+                                   fill = LivingStatus,
+      text = paste0("Age Range: ",
+                    AgeRange, "<br>",
+                    "Disability Status: ",
+                    LivingStatus, "<br>",
+                    "Number of People: ",
+                    NumPeople)
       )) +
     geom_bar(stat = "identity") +
-    labs(title = paste0("Number of People with Disadvantages
-                        Based on Age in ", year),
+    labs(title =
+           paste0("People Suffering Disadvantages by Age Range in ", year),
          x = "Age Range",
          y = "Number of People",
-         fill = "Disadvantage Status"
-    ) + theme(axis.text.x = element_text(angle = 30))
+         fill = "Disadvantages:"
+    ) + theme(axis.text.x = element_text(angle = tilt)) +
+    scale_fill_brewer(palette = pal)
 
   plot <- ggplotly(age_plot, tooltip = "text")
   return(plot)
