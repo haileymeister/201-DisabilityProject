@@ -3,8 +3,6 @@ library(shiny)
 library(shinyWidgets)
 
 
-
-
 # Page 1 - Title (Sophie)
 title_page <- tabPanel(
   "About Disability",
@@ -12,7 +10,7 @@ title_page <- tabPanel(
   img("", src = paste0("https://www.insidehighered.com/sites/default/",
                        "server_files/media/amir%20disability.jpg"),
       width = "700px", height = "300px"),
-  br(),
+  tags$br(),
 
   p("Disability can be categoriezed by many different factors. It can be
     physical or mental and can present itself in multiple forms. As disability
@@ -40,7 +38,7 @@ title_page <- tabPanel(
     understand what groups need the most attention when it comes to
     accessibility around the city. The final aspect of disability we want to
     discover is the overall change of disability status in Seattle."),
-  p(""),
+  tags$br(),
   p("Created by: Katie Brower, Sophie Hurst, Emily Kong, and Hailey Meister")
 )
 
