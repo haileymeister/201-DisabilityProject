@@ -24,7 +24,7 @@ demo_linegraph <- function(cleaned, variable_input) {
   percent_line_graph_data <- data_joined_service_year %>%
     mutate(percent_variable = (num_variable / num_all))
   
-  label_choice = list("DisabilityStatus" = "Disability Status",
+  label_choice <- list("DisabilityStatus" = "Disability Status",
                 "Veteran" = "Veteran Status",
                 "Homeless" = "Homeless",
                 "Driving" = "Driving Impairment",
@@ -39,9 +39,8 @@ demo_linegraph <- function(cleaned, variable_input) {
               text = paste("Year:", ServiceYear, "<br>",
                            paste0("Percent Disabled also ",
                                   formatted, ": ",
-                                  round(
-                                    (percent_variable * 100),
-                                    digits = 2), "%")
+                                  round((percent_variable * 100),
+                                        digits = 2), "%")
                            )
               )
            ) +

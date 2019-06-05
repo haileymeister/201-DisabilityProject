@@ -36,10 +36,10 @@ bar_chart <- function(dataframe, fill_choice, year_input){
   
   joined <- left_join(disabled, selected)
   
-  labels = list("LiveAlone" = "Live Alone",
+  labels <- list("LiveAlone" = "Live Alone",
                 "Homeless" = "Homeless",
                 "Veteran" = "Veteran",
-                "Driving" = "Driving", 
+                "Driving" = "Driving",
                 "HouseholdWithChildren" = "Household With Children",
                 "LimitedEnglish" = "Limited English")
   
@@ -55,7 +55,7 @@ bar_chart <- function(dataframe, fill_choice, year_input){
                                                 ": ", num_selected)
                                          )
                             )
-  ) + 
+  ) +
     geom_bar(stat = "identity") +
     labs(title = paste0("Population with Disabilities per Neighborhood in ",
                         year_input),
@@ -63,11 +63,10 @@ bar_chart <- function(dataframe, fill_choice, year_input){
          y = "Number of People With Disabilities",
          fill = formatted_label
     ) +
-    coord_flip() + 
+    coord_flip() +
     scale_y_continuous(labels = comma)
   
   bar_interactive <- ggplotly(bar, tooltip = "text")
   
   return(bar_interactive)
 }
-
