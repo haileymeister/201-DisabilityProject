@@ -2,12 +2,11 @@
 library(shiny)
 library(shinyWidgets)
 
-
 title_page <- tabPanel(
   "About Disability",
   h1("What is Disability?"),
   img("", src = "https://www.insidehighered.com/sites/default/server_files/media/amir%20disability.jpg",
-           width = "800px", height ="300px"),
+           width = "400px", height ="200px"),
   p("Disability can be categoriezed by many different factors. It can be
     physical or mental and can present itself in multiple forms. As disability
     becomes a greater topic of conversation, the ", em("scale"), " of 
@@ -33,9 +32,8 @@ title_page <- tabPanel(
     understand what groups need the most attention when it comes to 
     accessibility around the city. The final aspect of disability we want to
     discover is the overall change of disability status in Seattle."),
-  tags$br(),
-  p("Website created by: Katie Brower, Sophie Hurst, Emily Kong, and Hailey
-    Meister")
+  p(""),
+  p("Created by: Katie Brower, Sophie Hurst, Emily Kong, and Hailey Meister")
 )
 
 neighborhood_main_content <- mainPanel(
@@ -130,10 +128,29 @@ sum_page <- tabPanel(
   "Summary",
   h1("What We Learned"),
   h2("Seattle Neighborhoods"),
+  p("Each neighborhood has different needs per accessibility. The main thing
+    that needs to be learned from this aspect of our data is that Downtown
+    Seattle is one of the most highly concentrated areas for the disabled
+    homeless community. Between 2010 and 2016 the disabled homeless
+    population grew from 755 individuals to 1,102. This means that Downtown
+    Seattle needs the most attention when it comes to public accessibility
+    as much of the disabled population is using public spaces all the time."),
   h2("Disability by Age"),
-  h2("Changes Over Time")
+  p("Based on the data collected here, the age group of 70-74 years has the
+    highest concentration of people with disabilities. Below is a table
+    summarizing the disability status of this age group:"),
+  tableOutput("age_table"),
+  p("This shows the City of Seattle that they should think about tailoring
+    accessibility toward the needs of that population and thier financial
+    ability."),
+  h2("Changes Over Time"),
+  p("The overall change of disability demographics in Seattle, WA between
+    2010-2016 is an increase in overall numbers. Below is a summary of 
+    the differences between 2010-2016:"),
+  tableOutput("time_table"),
+  p("This shows the increasing need for accessibility overall in Seattle
+    as the number of people in need grows.")
 )
-
 
 ui <- fluidPage(
   setBackgroundColor(color = "#656A72"),
@@ -143,16 +160,16 @@ ui <- fluidPage(
       HTML(
         "p {
           color: #EBECEC;
-          }
+        }
         h1 {
           color: #EBECEC;
         }
         h2 {
           color: #EBECEC;
         }"
-        )
       )
-    ),
+    )
+  ),
   
   navbarPage( 
     inverse = TRUE,

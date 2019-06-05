@@ -15,4 +15,14 @@ server <- function(input, output) {
   output$ages <- renderPlotly({
     return(stacked_bar_chart(data_age, input$year, input$tilt_input))
   })
+  
+  output$age_table <- renderTable(
+    age_sum <- na.omit(cleaned) %>% 
+      filter(AgeRange == "70 to 74") %>% 
+      group_by(ServiceYear) %>% 
+      summarise(TotalCitizens = n(), Disabled = sum(DisabilityStatus == "Y"),
+                NotDisabled = sum(DisabilityStatus == "N"))
+  )
+  
+  #output$time_table <- renderTable()
 }
