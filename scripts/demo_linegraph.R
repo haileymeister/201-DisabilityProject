@@ -31,11 +31,11 @@ demo_linegraph <- function(cleaned, variable_input) {
     mutate(percent_variable = (num_variable / num_all))
   
   label_choice <- list(
-    "Veteran Status" = "Veteran",
-    "Homeless" = "Homeless",
-    "Driving Impaired" = "Driving",
-    "have Limited English"= "LimitedEnglish",
-    "have a Household with Children" = "HouseholdWithChildren")
+    "Veteran" = "Veteran Status",
+    "Homeless" = "Homelessness",
+    "Driving" = "Driving Impaired",
+    "LimitedEnglish"= "have Limited English",
+    "HouseholdWithChildren" = "have a Household with Children")
   
   formatted <- label_choice[[variable_input]]
   
@@ -52,7 +52,7 @@ demo_linegraph <- function(cleaned, variable_input) {
            ) +
     scale_y_continuous(labels = percent) +
     scale_x_discrete(limits = 2010:2016) +
-    geom_point(aes(size = percent_variable), fill = "darkorchid2") +
+    geom_point(aes(size = percent_variable)) +
     scale_size_continuous(range = c(2, 6)) +
     labs(
       title = paste0("Percentage of Seattle Population with disabilities and ", formatted, " over time"),
