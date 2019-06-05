@@ -1,6 +1,7 @@
 #load in packages
 library("plotly")
 library("dplyr")
+library("ggplot2")
 library("tidyverse")
 
 # Function for making the Line Graph

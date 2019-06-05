@@ -166,7 +166,7 @@ scatter_sidebar <- sidebarPanel(
 )
 
 scatter_tab <- tabPanel(
-  "Demographics of Seattle through 2010 to 2016",
+  "Through time",
   scatter_main,
   scatter_sidebar
 )
