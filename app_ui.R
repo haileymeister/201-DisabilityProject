@@ -2,13 +2,9 @@
 library(shiny)
 library(shinyWidgets)
 
-<<<<<<< HEAD
-title_page <- tabPanel(
-  "About Disability",
-  h1("What is Disability?"),
-  img("", src = "https://www.insidehighered.com/sites/default/server_files/media/amir%20disability.jpg",
-           width = "400px", height ="200px"),
-=======
+
+
+
 # Page 1 - Title (Sophie)
 title_page <- tabPanel(
   "About Disability",
@@ -19,7 +15,7 @@ title_page <- tabPanel(
            width = "700px", height = "300px", style = "margin-left: auto;
            margin-right: auto;"),
   br(),
->>>>>>> 2182dad5562e86747bb767a265d0ad7d49fda5fd
+
   p("Disability can be categoriezed by many different factors. It can be
     physical or mental and can present itself in multiple forms. As disability
     becomes a greater topic of conversation, the ", em("scale"), " of
@@ -228,16 +224,10 @@ ui <- fluidPage(
           color: #EBECEC;
         }"
       )
-<<<<<<< HEAD
     )
   ),
-  
-  navbarPage( 
-=======
-    ),
 
   navbarPage(
->>>>>>> 2182dad5562e86747bb767a265d0ad7d49fda5fd
     inverse = TRUE,
     "Disability Through Time",
     title_page,
