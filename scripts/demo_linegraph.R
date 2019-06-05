@@ -6,6 +6,10 @@ library(stringr)
 library(ggplot2)
 
 source("./scripts/filter_dynamic_column.R")
+library("plotly")
+library("dplyr")
+library("ggplot2")
+library("tidyverse")
 
 # Function for making the Line Graph
 demo_linegraph <- function(cleaned, variable_input) {

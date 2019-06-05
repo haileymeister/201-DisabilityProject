@@ -16,7 +16,10 @@ title_page <- tabPanel(
            margin-right: auto;"
   ),
   br(),
-
+  img("", src = paste0("https://www.insidehighered.com/sites/default/",
+                       "server_files/media/amir%20disability.jpg"),
+      width = "700px", height = "300px"),
+  tags$br(),
   p("Disability can be categoriezed by many different factors. It can be
     physical or mental and can present itself in multiple forms. As disability
     becomes a greater topic of conversation, the ", em("scale"), " of
@@ -44,7 +47,7 @@ title_page <- tabPanel(
     understand what groups need the most attention when it comes to
     accessibility around the city. The final aspect of disability we want to
     discover is the overall change of disability status in Seattle."),
-  p(""),
+  tags$br(),
   p("Created by: Katie Brower, Sophie Hurst, Emily Kong, and Hailey Meister")
 )
 
@@ -187,6 +190,7 @@ scatter_tab <- tabPanel(
   "Years",
   h1("Title"),
   p("Paragraph"),
+  "Through time",
   scatter_main,
   scatter_sidebar
 )
