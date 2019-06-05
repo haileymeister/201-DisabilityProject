@@ -1,6 +1,7 @@
 # Load packages
 library(shiny)
 library(shinyWidgets)
+library(plotly)
 
 # Page 1 - Title (Sophie)
 title_page <- tabPanel(
