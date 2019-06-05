@@ -6,16 +6,6 @@ library(shinyWidgets)
 title_page <- tabPanel(
   "About Disability",
   h1("What is Disability?"),
-  img("",
-    src =
-      paste0(
-        "https://www.insidehighered.com/sites/default/",
-        "server_files/media/amir%20disability.jpg"
-      ),
-    width = "700px", height = "300px", style = "margin-left: auto;
-           margin-right: auto;"
-  ),
-  br(),
   img("", src = paste0("https://www.insidehighered.com/sites/default/",
                        "server_files/media/amir%20disability.jpg"),
       width = "700px", height = "300px"),
