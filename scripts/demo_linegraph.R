@@ -62,7 +62,3 @@ demo_linegraph <- function(cleaned, variable_input) {
   
   return(scatter)
 }
-      y = paste0("Percent of People with ", variable_input)
-    )
-  return(demo_linegraph_display)
-}
