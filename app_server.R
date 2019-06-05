@@ -24,7 +24,7 @@ server <- function(input, output) {
   })
 
   output$scatter <- renderPlotly({
-    return(demo_linegraph(cleaned, input$variable_input))
+    return(demo_linegraph(cleaned, input$variable_input, input$color))
   })
 
   output$age_table <- renderTable(

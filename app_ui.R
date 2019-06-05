@@ -84,8 +84,7 @@ by_neighborhood <- tabPanel(
     neighborhood_main_content
   ),
   tags$br(),
-  p(
-    "Overall however from the data one can see that Seattle has problems with
+  p("Overall however from the data one can see that Seattle has problems with
     certain aspects of acessibility. Acessibility is defined by the Merriam
     Webster dictionary as,", strong("easily used or acessed by people with
     disabilities: adapted for use by people with disabilities"),
@@ -152,6 +151,15 @@ page_age <- tabPanel(
   sidebarLayout(
     age_sidebar,
     age_main_content
+  ),
+  tags$br(),
+  p("We should be focusing on providing accessibilty and care for seniors
+    around", strong("70-84"), ". Elders are often alone and suffer high
+    health risks. We see thousands of elders between ages of 70-84 every year
+    who are in need of care and we need to start paying attention.
+    Disability is prevalent amongst elders and the chart seems to show the same
+    trend every year. We should try our best to lower the numbers of
+    people suffering disadvantages."
   )
 )
 
@@ -177,15 +185,16 @@ scatter_tab <- tabPanel(
   "Years",
   h1("Disabilities in Seattle in 2010-2016"),
   p("The interactive scatterplot below demonstrates the relationships between
-    different demographic variables in the Seattle population with disabilities",
-    strong("throughout 2010 - 2016"), ". To discover more about these
-    relationships, various demographic variables of interest such as veteran
-    status, homelessness, driving impairment, having children in their house,
-    and limited English-speaking skills can be selected. Through this chart, we
-    can see howthe trend of the selected demographic variable has changed
-    throughout this time frame."),
+    different demographic variables in the Seattle population with
+    disabilities", strong("throughout 2010 - 2016"), ". To discover
+    more about these relationships, various demographic variables of
+    interest such as veteran status, homelessness, driving impairment,
+    having children in their house, and limited English-speaking skills
+    can be selected. Through this chart, we can see howthe trend of the
+    selected demographic variable has changed throughout this time frame."),
   scatter_main,
   scatter_sidebar,
+  tags$br(),
   p("From this interactive scatter plot, many trends were revealed.Both
     homelessness, and driving impairment had  an increase in the percentage
     of the Seattle population with disabilities throughout 2010 - 2016. When
@@ -248,7 +257,6 @@ sum_page <- tabPanel(
 
 ui <- fluidPage(
   setBackgroundColor(color = "#656A72"),
-
   tags$head(
     tags$style(
       HTML(
