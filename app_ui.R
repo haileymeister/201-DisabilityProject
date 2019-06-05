@@ -161,23 +161,42 @@ scatter_sidebar <- sidebarPanel(
   variable_input <- selectInput(
     "variable_input",
     label = "Demographic Variable of Interest",
-    choices = list("Disability Status" = "DisabilityStatus",
+    choices = list(
                    "Veteran Status" = "Veteran",
                    "Homeless" = "Homeless",
-                   "Driving Impairment" = "Driving",
-                   "Limited English"= "LimitedEnglish",
-                   "Households with Children" = "HouseholdWithChildren"),
-    selected = list("Disability Status" = "DisabilityStatus")
+                   "Driving Impaired" = "Driving",
+                   "have Limited English"= "LimitedEnglish",
+                   "have a Household with Children" = "HouseholdWithChildren"),
+    selected = list("Veteran Status" = "Veteran")
   )
 )
 
 scatter_tab <- tabPanel(
   "Years",
-  h1("Title"),
-  p("Paragraph"),
-  "Through time",
+  h1("Disabilities in Seattle in 2010-2016"),
+  p("The interactive scatterplot below demonstrates the relationships between
+    different demographic variables in the Seattle population with disabilities",
+    strong("throughout 2010 - 2016"), ". To discover more about these
+    relationships, various demographic variables of interest such as veteran
+    status, homelessness, driving impairment, having children in their house,
+    and limited English-speaking skills can be selected. Through this chart, we
+    can see howthe trend of the selected demographic variable has changed
+    throughout this time frame."),
   scatter_main,
-  scatter_sidebar
+  scatter_sidebar,
+  p("From this interactive scatter plot, many trends were revealed.Both
+    homelessness, and driving impairment had  an increase in the percentage
+    of the Seattle population with disabilities throughout 2010 - 2016. When
+    looking at veteran status, the overall trend is decreasing with
+    considerable variability amongst years. Out of all demographic variables,",
+    strong("driving impairment"), "had the", em("highest percentage"),
+    "increase from 40% to 56.12%. In the households with children demographic
+    variable, there was an increase between 2011 t0 2015 and a much lower
+    percentage in 2010. In the limited speaking English variable, the highest
+    percentage was in 2011 at 50.3% and since 2013, the percentage of Seattle
+    population with disabilities with this variable has decreased. If we
+    utilize the information from these trends, we can determine which
+    demographic variables need to be more focused on in current policy.")
 )
 
 # Page 5 - Summary (Sophie)

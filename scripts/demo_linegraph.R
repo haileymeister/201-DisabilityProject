@@ -15,10 +15,12 @@ library("tidyverse")
 demo_linegraph <- function(cleaned, variable_input) {
 
   disability_data <- filter1_by(na.omit(cleaned), variable_input, "Y") %>%
+    filter(DisabilityStatus == "Y") %>%
     group_by(ServiceYear) %>%
     summarize(num_variable = n())
   
   data_sorted_by_year <- na.omit(cleaned) %>%
+    filter(DisabilityStatus == "Y") %>%
     group_by(ServiceYear) %>%
     summarize(num_all = n())
   
@@ -28,12 +30,12 @@ demo_linegraph <- function(cleaned, variable_input) {
   percent_line_graph_data <- data_joined_service_year %>%
     mutate(percent_variable = (num_variable / num_all))
   
-  label_choice <- list("DisabilityStatus" = "Disability Status",
-                "Veteran" = "Veteran Status",
-                "Homeless" = "Homeless",
-                "Driving" = "Driving Impairment",
-                "Limited English"= "Limited English",
-                "HouseholdsWithChildren" = "Household With Children")
+  label_choice <- list(
+    "Veteran Status" = "Veteran",
+    "Homeless" = "Homeless",
+    "Driving Impaired" = "Driving",
+    "have Limited English"= "LimitedEnglish",
+    "have a Household with Children" = "HouseholdWithChildren")
   
   formatted <- label_choice[[variable_input]]
   
@@ -50,10 +52,10 @@ demo_linegraph <- function(cleaned, variable_input) {
            ) +
     scale_y_continuous(labels = percent) +
     scale_x_discrete(limits = 2010:2016) +
-    geom_point(aes(size = percent_variable)) +
+    geom_point(aes(size = percent_variable), fill = "darkorchid2") +
     scale_size_continuous(range = c(2, 6)) +
     labs(
-      title = paste0("Percentage of Seattle Population with ", formatted),
+      title = paste0("Percentage of Seattle Population with disabilities and ", formatted, " over time"),
       x = "Year", 
       y = paste0("Percent Disabled and ", formatted)
       )
@@ -61,8 +63,4 @@ demo_linegraph <- function(cleaned, variable_input) {
   scatter <- ggplotly(demo_linegraph_display, tooltip = "text")
   
   return(scatter)
-}
-      y = paste0("Percent of People with ", variable_input)
-    )
-  return(demo_linegraph_display)
 }
