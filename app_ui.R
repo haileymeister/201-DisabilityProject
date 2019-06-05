@@ -2,6 +2,7 @@
 library(shiny)
 library(shinyWidgets)
 
+# Page 1 - Title (Sophie)
 title_page <- tabPanel(
   "About Disability",
   h1("What is Disability?"),
@@ -42,6 +43,7 @@ title_page <- tabPanel(
     Meister")
 )
 
+# Page 2 - Neighborhoods (Hailey)
 neighborhood_main_content <- mainPanel(
   plotlyOutput("neighborhood")
 )
@@ -98,6 +100,7 @@ by_neighborhood <- tabPanel(
   )
 )
 
+# Page 3 - Age (Emily)
 age_main_content <- mainPanel(
   plotlyOutput("ages")
 )
@@ -126,7 +129,7 @@ age_sidebar <- sidebarPanel(
 
 page_age <- tabPanel(
   "Age Range",
-  titlePanel("Disability by Age Range in Seattle"),
+  h1("Age Range"),
   p("We can see from the interactive stacked bar charts which",
     em("age ranges"), "suffer the most from disadvantaging
     statuses between the years", strong("2010-2016"), ". We
@@ -146,9 +149,9 @@ page_age <- tabPanel(
   )
 )
 
-
+# Page 4 - Years (Katie)
 scatter_main <- mainPanel(
-  plotlyOutput("demo_linegraph")
+  plotlyOutput("scatter")
 )
 
 scatter_sidebar <- sidebarPanel(
@@ -166,11 +169,14 @@ scatter_sidebar <- sidebarPanel(
 )
 
 scatter_tab <- tabPanel(
-  "Demographics of Seattle through 2010 to 2016",
+  "Years",
+  h1("Title"),
+  p("Paragraph"),
   scatter_main,
   scatter_sidebar
 )
 
+# Page 5 - Summary (Sophie)
 sum_page <- tabPanel(
   "Summary",
   h1("What We Learned"),

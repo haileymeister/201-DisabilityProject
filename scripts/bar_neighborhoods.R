@@ -48,12 +48,11 @@ bar_chart <- function(dataframe, fill_choice, year_input){
   bar <- ggplot(joined, aes(x = reorder(GeographicLocation, num_disabled),
                             y = num_disabled, fill = num_selected,
                             text = paste("Geographic Location:",
-                                         joined$GeographicLocation, "<br>",
+                                         GeographicLocation, "<br>",
                                          "Number Disabled:",
-                                         joined$num_disabled, "<br>",
-                                         paste0("Number ", 
-                                                formatted_label, ":"),
-                                         joined$num_selected
+                                         num_disabled, "<br>",
+                                         paste0("Number ", formatted_label,
+                                                ": ", num_selected)
                                          )
                             )
   ) + 
@@ -66,7 +65,9 @@ bar_chart <- function(dataframe, fill_choice, year_input){
     ) +
     coord_flip() + 
     scale_y_continuous(labels = comma)
+  
   bar_interactive <- ggplotly(bar, tooltip = "text")
+  
   return(bar_interactive)
 }
 

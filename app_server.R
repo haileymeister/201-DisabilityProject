@@ -23,7 +23,7 @@ server <- function(input, output) {
                              input$tilt_input, input$pal_input))
   })
   
-  output$demo_linegraph <- renderPlot({
+  output$scatter <- renderPlotly({
     return(demo_linegraph(cleaned, input$variable_input))
   })
   
