@@ -2,18 +2,19 @@
 library(shiny)
 library(shinyWidgets)
 
-
-
-
 # Page 1 - Title (Sophie)
 title_page <- tabPanel(
   "About Disability",
   h1("What is Disability?"),
-  img("", src =
-        paste0("https://www.insidehighered.com/sites/default/",
-               "server_files/media/amir%20disability.jpg"),
-           width = "700px", height = "300px", style = "margin-left: auto;
-           margin-right: auto;"),
+  img("",
+    src =
+      paste0(
+        "https://www.insidehighered.com/sites/default/",
+        "server_files/media/amir%20disability.jpg"
+      ),
+    width = "700px", height = "300px", style = "margin-left: auto;
+           margin-right: auto;"
+  ),
   br(),
 
   p("Disability can be categoriezed by many different factors. It can be
@@ -21,9 +22,10 @@ title_page <- tabPanel(
     becomes a greater topic of conversation, the ", em("scale"), " of
     disability needs to be recognized to figure out how to better serve that
     community as a whole."),
-  
+
   h2("Data Source"),
-  p("The data used in this website is provided from the ",
+  p(
+    "The data used in this website is provided from the ",
     a("SEA Aging and Disability Services",
       href = "https://www.kaggle.com/city-of-seattle
       /sea-aging-and-disability-services-client-level",
@@ -31,7 +33,7 @@ title_page <- tabPanel(
     ),
     "."
   ),
-  
+
   h2("Why Disability?"),
   p("We aim to look at an overview of the Seattle, WA disability community to
     see where ", em("accessibility"), " may need to be improved uopn. We want
@@ -55,12 +57,14 @@ neighborhood_sidebar <- sidebarPanel(
   fill_input <- selectInput(
     "fill_input",
     label = "Fill by",
-    choices = list("Live Alone" = "LiveAlone",
-                   "Homeless" = "Homeless",
-                   "Veteran" = "Veteran",
-                   "Driving" = "Driving",
-                   "Household With Children" = "HouseholdWithChildren",
-                   "Limited English" = "LimitedEnglish"),
+    choices = list(
+      "Live Alone" = "LiveAlone",
+      "Homeless" = "Homeless",
+      "Veteran" = "Veteran",
+      "Driving" = "Driving",
+      "Household With Children" = "HouseholdWithChildren",
+      "Limited English" = "LimitedEnglish"
+    ),
     selected = list("Live Alone" = "LiveAlone")
   ),
   year_input <- radioButtons(
@@ -80,15 +84,15 @@ by_neighborhood <- tabPanel(
     are homeless, are Veterans, can drive, live in a house with children, and
     speak limited English. The chart is able to clearly depict which Seattle
     neighborhood has the highest population of people with Disabilities based
-    on the chosen year."
-  ),
+    on the chosen year."),
 
   sidebarLayout(
     neighborhood_sidebar,
     neighborhood_main_content
   ),
   tags$br(),
-  p("Overall however from the data one can see that Seattle has problems with
+  p(
+    "Overall however from the data one can see that Seattle has problems with
     certain aspects of acessibility. Acessibility is defined by the Merriam
     Webster dictionary as,", strong("easily used or acessed by people with
     disabilities: adapted for use by people with disabilities"),
@@ -112,18 +116,22 @@ age_sidebar <- sidebarPanel(
   year_input <- selectInput(
     "year",
     label = "Year",
-    choices = list("2010", "2011", "2012",
-                   "2013", "2014", "2015", "2016"),
+    choices = list(
+      "2010", "2011", "2012",
+      "2013", "2014", "2015", "2016"
+    ),
     selected = "2016"
   ),
   pal_input <- selectInput(
     "pal_input",
     label = "Colors",
-    choices = list("Paired", "Set1",
-                   "Set2", "Pastel1", 
-                   "Pastel2", "Spectral"),
-    selected = "Paired"
+    choices = list(
+      "Paired", "Set1",
+      "Set2", "Pastel1",
+      "Pastel2", "Spectral"
     ),
+    selected = "Paired"
+  ),
   tilt_input <- sliderInput(
     "tilt_input",
     label = "Tilt of X-Axis Label", min = 25, max = 90, value = 30
@@ -133,7 +141,8 @@ age_sidebar <- sidebarPanel(
 page_age <- tabPanel(
   "Age Range",
   h1("Age Range"),
-  p("We can see from the interactive stacked bar charts which",
+  p(
+    "We can see from the interactive stacked bar charts which",
     em("age ranges"), "suffer the most from disadvantaging
     statuses between the years", strong("2010-2016"), ". We
     determine disadvantages as whether or not the
@@ -144,7 +153,8 @@ page_age <- tabPanel(
     all 7 years. Hovering over the interactive charts shows the
     exact number of people in each category under
     each age range. We can use this information to decide which
-    age groups need the most help with increasing accessibility."),
+    age groups need the most help with increasing accessibility."
+  ),
   tags$br(),
   sidebarLayout(
     age_sidebar,
@@ -161,12 +171,14 @@ scatter_sidebar <- sidebarPanel(
   variable_input <- selectInput(
     "variable_input",
     label = "Demographic Variable of Interest",
-    choices = list("Disability Status" = "DisabilityStatus",
-                   "Veteran Status" = "Veteran",
-                   "Homeless" = "Homeless",
-                   "Driving Impairment" = "Driving",
-                   "Limited English"= "LimitedEnglish",
-                   "Households with Children" = "HouseholdWithChildren"),
+    choices = list(
+      "Disability Status" = "DisabilityStatus",
+      "Veteran Status" = "Veteran",
+      "Homeless" = "Homeless",
+      "Driving Impairment" = "Driving",
+      "Limited English" = "LimitedEnglish",
+      "Households with Children" = "HouseholdWithChildren"
+    ),
     selected = list("Disability Status" = "DisabilityStatus")
   )
 )
@@ -184,28 +196,44 @@ sum_page <- tabPanel(
   "Summary",
   h1("What We Learned"),
   h2("Seattle Neighborhoods"),
-  p("Each neighborhood has different needs per accessibility. The main thing
-    that needs to be learned from this aspect of our data is that Downtown
-    Seattle is one of the most highly concentrated areas for the disabled
-    homeless community. Between 2010 and 2016 the disabled homeless
-    population grew from 755 individuals to 1,102. This means that Downtown
-    Seattle needs the most attention when it comes to public accessibility
-    as much of the disabled population is using public spaces all the time."),
+  p("Each neighborhood has different needs for ", em("accessibility"), ". The
+    main thing that needs to be learned from this aspect of our data is that
+    Downtown Seattle is one of the most highly concentrated areas for the
+    disabled homeless community. Between 2010 and 2016 the disabled homeless
+    population grew from ", strong("755 individuals to 1,102"), ". This means
+    that Downtown Seattle needs the most attention when it comes to public
+    accessibility as much of the disabled population is using public spaces all
+    the time."),
   h2("Disability by Age"),
-  p("Based on the data collected here, the age group of 70-74 years has the
-    highest concentration of people with disabilities. Below is a table
-    summarizing the disability status of this age group:"),
+  p(
+    "Based on the data collected here, the age group of ",
+    strong("70-74 years"), " has the highest concentration of people with
+    disabilities. Below is a table summarizing the disability status of this
+    age group:"
+  ),
   tableOutput("age_table"),
-  p("This shows the City of Seattle that they should think about tailoring
-    accessibility toward the needs of that population and thier financial
-    ability."),
+  p(
+    "This shows the City of Seattle that they should think about ",
+    em("tailoring"), "accessibility toward the needs of that population
+    according to thier financial ability."
+  ),
   h2("Changes Over Time"),
-  p("The overall change of disability demographics in Seattle, WA between
-    2010-2016 is an increase in overall numbers. Below is a summary of 
-    the differences between 2010-2016:"),
-  tableOutput("time_table"),
-  p("This shows the increasing need for accessibility overall in Seattle
-    as the number of people in need grows.")
+  p(
+    "The overall change of disability demographics in Seattle, WA between
+    2010-2016 is an increase in overall numbers. Based on this data, 57.58%
+    of the Seattle population had a disability in 2010, that number has grown
+    to 59.84% in 2016. As this number continues to grow it shows the increasing
+    need for accessibility overall in Seattle. A ", strong("1% difference"),
+    " is an actual growth of ", strong("46,357"), " people. Those people have
+    greater needs than what is currently offered on the basis of public
+    accommodations."
+  ),
+  br(),
+  p("Overall, this data shows the city of Seattle that there is an increasing
+    need for public and private accessibility throughout the city. This could
+    include better access points to the Link Light Rail, something to help
+    people who use wheelchairs get up and down the giant hills, and more
+    accountability for ADA required aspects to buildings.")
 )
 
 ui <- fluidPage(
@@ -222,6 +250,9 @@ ui <- fluidPage(
         }
         h2 {
           color: #EBECEC;
+        }
+        table td {
+          color: white
         }"
       )
     )
