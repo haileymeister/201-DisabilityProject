@@ -15,10 +15,12 @@ library("tidyverse")
 demo_linegraph <- function(cleaned, variable_input) {
 
   disability_data <- filter1_by(na.omit(cleaned), variable_input, "Y") %>%
+    filter(DisabilityStatus == "Y") %>%
     group_by(ServiceYear) %>%
     summarize(num_variable = n())
   
   data_sorted_by_year <- na.omit(cleaned) %>%
+    filter(DisabilityStatus == "Y") %>%
     group_by(ServiceYear) %>%
     summarize(num_all = n())
   
@@ -28,12 +30,12 @@ demo_linegraph <- function(cleaned, variable_input) {
   percent_line_graph_data <- data_joined_service_year %>%
     mutate(percent_variable = (num_variable / num_all))
   
-  label_choice <- list("DisabilityStatus" = "Disability Status",
-                "Veteran" = "Veteran Status",
-                "Homeless" = "Homeless",
-                "Driving" = "Driving Impairment",
-                "Limited English"= "Limited English",
-                "HouseholdsWithChildren" = "Household With Children")
+  label_choice <- list(
+    "Veteran" = "Veteran Status",
+    "Homeless" = "Homelessness",
+    "Driving" = "Driving Impaired",
+    "LimitedEnglish"= "have Limited English",
+    "HouseholdWithChildren" = "have a Household with Children")
   
   formatted <- label_choice[[variable_input]]
   
@@ -53,7 +55,7 @@ demo_linegraph <- function(cleaned, variable_input) {
     geom_point(aes(size = percent_variable)) +
     scale_size_continuous(range = c(2, 6)) +
     labs(
-      title = paste0("Percentage of Seattle Population with ", formatted),
+      title = paste0("Percentage of Seattle Population with disabilities and ", formatted, " over time"),
       x = "Year", 
       y = paste0("Percent Disabled and ", formatted)
       )
