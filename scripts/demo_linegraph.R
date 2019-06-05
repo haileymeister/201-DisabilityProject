@@ -6,6 +6,10 @@ library(stringr)
 library(ggplot2)
 
 source("./scripts/filter_dynamic_column.R")
+library("plotly")
+library("dplyr")
+library("ggplot2")
+library("tidyverse")
 
 # Function for making the Line Graph
 demo_linegraph <- function(cleaned, variable_input) {
@@ -57,4 +61,8 @@ demo_linegraph <- function(cleaned, variable_input) {
   scatter <- ggplotly(demo_linegraph_display, tooltip = "text")
   
   return(scatter)
+}
+      y = paste0("Percent of People with ", variable_input)
+    )
+  return(demo_linegraph_display)
 }

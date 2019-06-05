@@ -175,6 +175,7 @@ scatter_tab <- tabPanel(
   "Years",
   h1("Title"),
   p("Paragraph"),
+  "Through time",
   scatter_main,
   scatter_sidebar
 )
